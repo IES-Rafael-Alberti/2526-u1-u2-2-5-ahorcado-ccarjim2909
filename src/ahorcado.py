@@ -34,7 +34,16 @@ def solicitar_palabra():
     # - Verificar que tenga al menos 5 caracteres (len())
     # - Verificar que solo contenga letras (isalpha())
     # - Convertir a mayúsculas (upper())
-    pass
+    palabra = input("Ingresa una palabra: ")
+    while len(palabra) < 5 or not palabra.isalpha():
+        if not palabra.isalpha():
+            print("Error la palabra solo puede contener letras")
+            palabra = input("Intentalo de nuevo: ")
+        else:
+            print("Error tienes que escribir una palabra de al menos 5 letras")
+            palabra = input("Intentalo de nuevo: ")
+    palabra = palabra.upper()
+    return palabra
 
 
 def solicitar_letra(letras_usadas):
@@ -54,7 +63,12 @@ def solicitar_letra(letras_usadas):
     # - Verificar que sea una letra (isalpha())
     # - Verificar que no esté en letras_usadas (operador 'in')
     # - Convertir a mayúsculas (upper())
-    pass
+
+    letra = input("Ingresa una letra: ")
+    while len(letra) != 1 or not letra.isalpha() or letra in letras_usadas:
+        letra = input("Intentalo de nuevo: ")
+    letra = letra.upper()
+    return letra
 
 
 def mostrar_estado(palabra_oculta, intentos, letras_usadas):
@@ -70,7 +84,9 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas):
     # - Imprimir intentos restantes
     # - Imprimir la palabra con espacios entre caracteres
     # - Imprimir las letras usadas
-    pass
+    print("Intentos restantes:", intentos)
+    print("Palabra:", palabra_oculta)
+    print("Letras usadas:", letras_usadas, "\n")
 
 
 def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
@@ -90,7 +106,20 @@ def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
     # - Usar enumerate() para obtener índice y carácter
     # - Si el carácter coincide con la letra, reemplazar en palabra_oculta
     # - Puedes convertir palabra_oculta a lista, modificar y volver a string
-    pass
+    palabra_oculta = palabra_oculta.split(" ")
+    contador = 0
+
+    for i in palabra:
+        if i == letra:
+            palabra_oculta[contador] = i
+            print("¡Bien! La letra", letra, "está en la palabra.\n")
+        contador = contador + 1
+    if letra not in palabra:
+        print("¡Letra incorrecta!\n")
+
+    palabra_oculta = " ".join(palabra_oculta)
+
+    return palabra_oculta
 
 
 def jugar():
@@ -103,17 +132,21 @@ def jugar():
     INTENTOS_MAXIMOS = 5
     
     # TODO: Solicitar la palabra al jugador 1
-    # palabra = solicitar_palabra()
+    palabra = solicitar_palabra()
     
     # TODO: Limpiar la pantalla para que el jugador 2 no vea la palabra
-    # limpiar_pantalla()
+    limpiar_pantalla()
     
     # TODO: Inicializar variables del juego
     # - palabra_oculta: string con guiones bajos (ej: "_ _ _ _ _")
     # - intentos: número de intentos restantes
     # - letras_usadas: lista vacía
     # - juego_terminado: False
-    
+    palabra_oculta = "_ " * len(palabra)
+    intento = 0
+    letras_usadas = []
+    juego_terminado = False
+
     print("Jugador 2: ¡Adivina la palabra!\n")
     
     # TODO: Bucle principal del juego
@@ -128,11 +161,31 @@ def jugar():
     #   5. Si la letra NO está en la palabra:
     #      - Restar un intento
     #      - Mostrar mensaje de fallo
+    while intento < INTENTOS_MAXIMOS and juego_terminado == False:
+        mostrar_estado(palabra_oculta,INTENTOS_MAXIMOS - intento, letras_usadas)
+        letra = solicitar_letra(letras_usadas)
+        letras_usadas.append(letra)
+        palabra_oculta = actualizar_palabra_oculta(palabra, palabra_oculta, letra)
+
+        aciertos = 0
+        for i in palabra_oculta:
+            if i != "_":
+                aciertos = aciertos + 1
+            if aciertos == len(palabra_oculta):
+                print(palabra_oculta)
+                juego_terminado = True
+        if not letra in palabra:
+            intento = intento + 1
+
     
     # TODO: Mostrar mensaje final
     # - Si ganó: mostrar felicitación y la palabra
     # - Si perdió: mostrar mensaje de derrota y la palabra correcta
-    pass
+    if juego_terminado:
+        print("Felicidades has acertado la palabra")
+    else:
+        print("¡GAME OVER! Te has quedado sin intentos")
+        print("La palabra era:", palabra)
 
 
 def main():
@@ -142,9 +195,9 @@ def main():
     jugar()
     
     # TODO (Opcional): Preguntar si quiere jugar otra vez
-    # jugar_otra_vez = input("\n¿Quieres jugar otra vez? (s/n): ")
-    # if jugar_otra_vez.lower() == 's':
-    #     main()
+    jugar_otra_vez = input("\n¿Quieres jugar otra vez? (s/n): ")
+    if jugar_otra_vez.lower() == 's':
+        main()
 
 
 if __name__ == "__main__":
