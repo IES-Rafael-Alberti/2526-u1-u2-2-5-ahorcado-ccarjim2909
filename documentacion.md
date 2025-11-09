@@ -28,13 +28,13 @@ Simular el juego del ahorcado validando entradas del usuario y mostrando el prog
 
 | Función | Descripción | Parámetros | Retorno |
 |---------|-------------|------------|---------|
-| `limpiar_pantalla()` | Limpia la consola imprimiendo saltos de línea | Ninguno | Ninguno |
-| `solicitar_palabra()` | Solicita una palabra válida al jugador 1 (mínimo 5 letras y solo caracteres alfabéticos) | Ninguno | String en mayúsculas |
-| `solicitar_letra(letras_usadas)` | Solicita una letra válida al jugador 2 que no haya sido utilizada | Lista con letras usadas | Letra válida en mayúsculas |
-| `mostrar_estado()` | Muestra intentos restantes, palabra oculta y letras usadas | Palabra oculta, intentos, lista de letras | Ninguno |
-| `actualizar_palabra_oculta()` | Reemplaza guiones por letras correctas | Palabra real, palabra oculta y letra introducida | Palabra oculta actualizada |
-| `jugar()` | Ejecuta toda la lógica del juego | Ninguno | Ninguno |
-| `main()` | Punto de entrada del programa | Ninguno | Ninguno |
+| [`limpiar_pantalla()`](https://github.com/IES-Rafael-Alberti/2526-u1-u2-2-5-ahorcado-ccarjim2909/blob/535afaf1e803b87c8ee77a7ab6032258541fa0a3/src/ahorcado.py#L16-L21) | Limpia la consola imprimiendo saltos de línea | Ninguno | Ninguno |
+| [`solicitar_palabra()`](https://github.com/IES-Rafael-Alberti/2526-u1-u2-2-5-ahorcado-ccarjim2909/blob/535afaf1e803b87c8ee77a7ab6032258541fa0a3/src/ahorcado.py#L24-L46) | Solicita una palabra válida al jugador 1 (mínimo 5 letras y solo caracteres alfabéticos) | Ninguno | String en mayúsculas |
+| [`solicitar_letra(letras_usadas)`](https://github.com/IES-Rafael-Alberti/2526-u1-u2-2-5-ahorcado-ccarjim2909/blob/535afaf1e803b87c8ee77a7ab6032258541fa0a3/src/ahorcado.py#L49-L79) | Solicita una letra válida al jugador 2 que no haya sido utilizada | Lista con letras usadas | Letra válida en mayúsculas |
+| [`mostrar_estado()`](https://github.com/IES-Rafael-Alberti/2526-u1-u2-2-5-ahorcado-ccarjim2909/blob/535afaf1e803b87c8ee77a7ab6032258541fa0a3/src/ahorcado.py#L82-L97) | Muestra intentos restantes, palabra oculta y letras usadas | Palabra oculta, intentos, lista de letras | Ninguno |
+| [`actualizar_palabra_oculta()`](https://github.com/IES-Rafael-Alberti/2526-u1-u2-2-5-ahorcado-ccarjim2909/blob/535afaf1e803b87c8ee77a7ab6032258541fa0a3/src/ahorcado.py#L100-L130) | Reemplaza guiones por letras correctas | Palabra real, palabra oculta y letra introducida | Palabra oculta actualizada |
+| [`jugar()`](https://github.com/IES-Rafael-Alberti/2526-u1-u2-2-5-ahorcado-ccarjim2909/blob/535afaf1e803b87c8ee77a7ab6032258541fa0a3/src/ahorcado.py#L133-L196) | Ejecuta toda la lógica del juego | Ninguno | Ninguno |
+| [`main()`](https://github.com/IES-Rafael-Alberti/2526-u1-u2-2-5-ahorcado-ccarjim2909/blob/535afaf1e803b87c8ee77a7ab6032258541fa0a3/src/ahorcado.py#L199-L208) | Punto de entrada del programa | Ninguno | Ninguno |
 
 ---
 
@@ -105,3 +105,4 @@ El programa pide una palabra al jugador 1 y posteriormente muestra al jugador 2 
 - Fecha del proyecto: *06/11/2025*
 
 ---
+
